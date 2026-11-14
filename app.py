@@ -1,4 +1,4 @@
-"""FastAPI server for Zay_Vietsub.vn — Auto Chinese/English -> Vietnamese Video Studio."""
+"""FastAPI server for Zay_Vietsub Beta — Auto Chinese/English -> Vietnamese Video Studio."""
 
 from __future__ import annotations
 
@@ -79,7 +79,7 @@ _RATE_LOCK = threading.Lock()
 init_db()
 
 app = FastAPI(
-    title="Zay_Vietsub.vn",
+    title="Zay_Vietsub Beta",
     version="1.0.0",
     docs_url=None,
     redoc_url=None,
@@ -240,7 +240,7 @@ def health_check() -> dict[str, Any]:
     sys_state = get_system_settings()
     return {
         "status": "ok",
-        "brand": "Zay_Vietsub.vn",
+        "brand": "Zay_Vietsub Beta",
         "maintenance_mode": sys_state["maintenance_mode"],
     }
 
@@ -678,7 +678,7 @@ def api_rerender_job(
 
 @app.get("/api/tool/download")
 def download_portable_tool() -> StreamingResponse:
-    """Package Zay_Vietsub.vn source & launcher into a portable ZIP archive."""
+    """Package Zay_Vietsub Beta source & launcher into a portable ZIP archive."""
     buf = io.BytesIO()
     include_items = [
         BASE_DIR / "app.py",
@@ -705,7 +705,7 @@ def download_portable_tool() -> StreamingResponse:
                     zf.write(item, arcname=f"Zay_Vietsub/{rel.as_posix()}")
 
         readme = (
-            "=== ZAY_VIETSUB.VN — TOOL AUTO DICH VIDEO AI ===\n\n"
+            "=== ZAY_VIETSUB BETA — TOOL AUTO DICH VIDEO AI ===\n\n"
             "1. Cai Python 3.10+ va dat ffmpeg.exe cung thu muc hoac vao PATH.\n"
             "2. Bam dup vao file Chay_Zay_Vietsub.bat de tu dong cai thu vien va mo Web Studio.\n"
             "3. Truy cap http://127.0.0.1:8088 tren dien thoai hoac laptop.\n"

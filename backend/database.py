@@ -182,7 +182,7 @@ def init_db() -> None:
         conn.execute(
             """
             INSERT OR IGNORE INTO system_settings (key, value, updated_at)
-            VALUES ('maintenance_message', 'Hệ thống Zay_Vietsub.vn đang bảo trì nâng cấp máy chủ. Vui lòng quay lại sau!', ?)
+            VALUES ('maintenance_message', 'Hệ thống Zay_Vietsub Beta đang bảo trì nâng cấp máy chủ. Vui lòng quay lại sau!', ?)
             """,
             (now,),
         )
@@ -215,7 +215,7 @@ def get_system_settings() -> dict[str, Any]:
         "maintenance_mode": kv.get("maintenance_mode", "0") == "1",
         "maintenance_message": kv.get(
             "maintenance_message",
-            "Hệ thống Zay_Vietsub.vn đang bảo trì nâng cấp máy chủ. Vui lòng quay lại sau!",
+            "Hệ thống Zay_Vietsub Beta đang bảo trì nâng cấp máy chủ. Vui lòng quay lại sau!",
         ),
         "updated_at": updated,
     }

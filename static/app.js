@@ -21,7 +21,7 @@ const state = {
   backendPromise: null,
   maintenance: {
     maintenance_mode: false,
-    maintenance_message: "Hệ thống Zay_Vietsub.vn đang bảo trì nâng cấp máy chủ. Vui lòng quay lại sau!",
+    maintenance_message: "Hệ thống Zay_Vietsub Beta đang bảo trì nâng cấp máy chủ. Vui lòng quay lại sau!",
   },
   ownerUsers: [],
   ownerTransactions: [],
@@ -145,7 +145,7 @@ function updateMaintenanceUI(maint) {
       maintenance_mode: Boolean(maint.maintenance_mode),
       maintenance_message:
         maint.maintenance_message ||
-        "Hệ thống Zay_Vietsub.vn đang bảo trì nâng cấp máy chủ. Vui lòng quay lại sau!",
+        "Hệ thống Zay_Vietsub Beta đang bảo trì nâng cấp máy chủ. Vui lòng quay lại sau!",
     };
   }
   const banner = document.getElementById("maintenance-banner");

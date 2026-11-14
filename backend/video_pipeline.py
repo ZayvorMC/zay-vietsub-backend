@@ -1417,7 +1417,7 @@ def generate_ass_file(
 
     header = (
         "\ufeff[Script Info]\n"
-        "Title: Zay_Vietsub.vn Subtitles\n"
+        "Title: Zay_Vietsub Beta Subtitles\n"
         "ScriptType: v4.00+\n"
         f"PlayResX: {width}\n"
         f"PlayResY: {height}\n"

@@ -418,7 +418,7 @@ def _call_free_ai_pass2(
     ]
 
     system_prompt = (
-        "Bạn là chuyên gia biên tập Vietsub & đạo diễn lồng tiếng chuyên nghiệp cho Zay_Vietsub.vn.\n"
+        "Bạn là chuyên gia biên tập Vietsub & đạo diễn lồng tiếng chuyên nghiệp cho Zay_Vietsub Beta.\n"
         f"Nhiệm vụ: Kiểm tra và biên tập lại bản dịch Lượt 1 từ {lang_label} sang Tiếng Việt (Lượt 2) theo toàn bộ mạch truyện.\n"
         "Yêu cầu BẮT BUỘC:\n"
         "1. Dịch đúng ngữ cảnh, đúng tiếng lóng/thành ngữ (ví dụ tiếng Trung: 摸鱼 = trốn tiết/lười biếng, "
