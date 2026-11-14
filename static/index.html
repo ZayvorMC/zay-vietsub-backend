@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zay_Vietsub.vn — Tool Auto Dịch Video Trung & Anh Sang Tiếng Việt AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=20261114e">
+</head>
+<body>
+  <!-- Ambient compositor-friendly motion background -->
+  <div class="aurora-stage" aria-hidden="true">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+    <div class="grid-mesh"></div>
+  </div>
+
+  <!-- Sticky Top Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark" aria-hidden="true">ZV</span>
+        <span class="brand-text">
+          <strong>Zay_Vietsub<span class="accent">.vn</span></strong>
+          <small>AI Video Auto Dub &amp; Sub</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <a href="#studio" class="nav-link">Studio Dịch</a>
+        <a href="#pricing" class="nav-link">Hội Viên &amp; Giá</a>
+        <a href="#history" class="nav-link">Lịch Sử</a>
+        <a href="#owner-section" id="owner-nav-link" class="nav-link nav-owner hidden">Quản Lý Owner</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" id="motion-toggle-btn" class="btn btn-ghost btn-sm" title="Bật hoặc tạm dừng hiệu ứng nền">
+          <span class="dot-live" aria-hidden="true"></span>
+          <span id="motion-toggle-label">Tạm dừng hiệu ứng</span>
+        </button>
+
+        <button type="button" id="open-tool-btn" class="btn btn-outline btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Tải Tool</span>
+        </button>
+
+        <div id="user-pill" class="user-pill hidden">
+          <div class="credit-badge">
+            <span id="header-plan-badge" class="plan-tag">FREE</span>
+            <strong id="header-credits-count">10</strong>
+            <span>lượt</span>
+          </div>
+          <button type="button" id="header-user-btn" class="btn btn-ghost btn-sm"></button>
+          <button type="button" id="logout-btn" class="btn btn-ghost btn-xs">Thoát</button>
+        </div>
+
+        <button type="button" id="open-auth-btn" class="btn btn-primary btn-sm">
+          Đăng nhập / Đăng ký
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="page-main">
+    <!-- Server Maintenance Banner -->
+    <div id="maintenance-banner" class="maintenance-banner hidden" role="status">
+      <div class="container maintenance-banner-inner">
+        <span class="maintenance-pill">BẢO TRÌ SERVER</span>
+        <span id="maintenance-banner-text">Hệ thống đang tạm đóng để bảo trì nâng cấp máy chủ. Vui lòng quay lại sau!</span>
+      </div>
+    </div>
+
+    <!-- Hero + Portable Tool Download Card -->
+    <section class="hero-section container">
+      <div class="hero-grid">
+        <div class="hero-copy reveal-on-load">
+          <div class="eyebrow-pill">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span>Bilibili • YouTube • TikTok • Douyin (&lt; 10 phút)</span>
+          </div>
+          <h1>
+            Auto Dịch &amp; Lồng Tiếng Video
+            <span class="gradient-text">Trung / Anh → Việt</span>
+            Khít Từng Mili-giây
+          </h1>
+          <p class="hero-lead">
+            Tự trích lời thoại, AI dịch thuật 2 lượt chuẩn ngữ cảnh, 1 thanh che mờ cố định từ đầu đến cuối,
+            gắn chữ Vietsub ngay tâm &amp; lồng tiếng Việt khớp thời gian kèm nhạc nền dưới 30%.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#studio" class="btn btn-primary btn-lg">
+              Mở Studio Dịch Ngay
+            </a>
+            <a href="#pricing" class="btn btn-outline btn-lg">
+              Gói Free 10 Lượt / Tháng
+            </a>
+          </div>
+        </div>
+
+        <!-- Card Tải Tool Xem Trực Tiếp Web -->
+        <aside class="tool-download-card glass-card reveal-on-load" aria-label="Tải công cụ Zay_Vietsub về máy">
+          <div class="tool-card-top">
+            <span class="tool-chip">PORTABLE TOOL v1.0</span>
+            <span class="tool-size">Windows • Python + FFmpeg</span>
+          </div>
+          <h2>Thẻ Tải Tool Chạy Trực Tiếp Web</h2>
+          <p>
+            Tải trọn bộ <strong>Zay_Vietsub_Portable.zip</strong> về máy để chạy server nội bộ siêu tốc,
+            xem &amp; thao tác trực tiếp trên trình duyệt điện thoại lẫn laptop mà không lo giật lag.
+          </p>
+          <ul class="tool-checklist">
+            <li>Chạy 1 chạm qua <code>Chay_Zay_Vietsub.bat</code></li>
+            <li>Đầy đủ AI dịch 2 lượt + Edge-TTS + FFmpeg Blur</li>
+            <li>Giao diện responsive gọn đẹp trên mọi màn hình</li>
+          </ul>
+          <div class="tool-card-actions">
+            <a id="hero-download-tool-link" href="/Zay_Vietsub_Portable.zip" class="btn btn-primary btn-block" download="Zay_Vietsub_Portable.zip">
+              Tải Ngay Zay_Vietsub_Portable.zip
+            </a>
+            <button type="button" id="preview-tool-guide-btn" class="btn btn-ghost btn-block">
+              Xem Hướng Dẫn Cài Đặt
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Main Translation Studio -->
+    <section id="studio" class="studio-section container">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">WORKBENCH STUDIO</span>
+          <h2>Phòng Dịch &amp; Lồng Tiếng Video Tự Động</h2>
+        </div>
+        <div class="limit-pill">
+          Giới hạn tự động: <strong>&lt; 10 phút / video</strong>
+        </div>
+      </div>
+
+      <div class="studio-grid">
+        <!-- Left Column: Source, Audio Mixer, Blur Settings -->
+        <div class="studio-panel glass-card">
+          <form id="translate-form" class="studio-form">
+            <!-- Step A: Video Source -->
+            <div class="control-block">
+              <div class="block-head">
+                <h3>1. Nguồn Video (Bilibili, YouTube, File)</h3>
+                <span class="badge-soft">&lt; 10 phút</span>
+              </div>
+
+              <div class="source-tabs" role="tablist" aria-label="Chọn nguồn video">
+                <button type="button" class="tab-btn is-active" data-source-tab="url" role="tab" aria-selected="true">
+                  Dán Link Video
+                </button>
+                <button type="button" class="tab-btn" data-source-tab="upload" role="tab" aria-selected="false">
+                  Tải File MP4
+                </button>
+              </div>
+
+              <div id="tab-panel-url" class="tab-panel">
+                <label for="source-url-input" class="field-label">Đường dẫn Bilibili / YouTube / TikTok / Douyin</label>
+                <input
+                  type="url"
+                  id="source-url-input"
+                  name="source_url"
+                  class="text-input"
+                  placeholder="https://www.bilibili.com/video/BV... hoặc https://youtu.be/..."
+                  inputmode="url"
+                >
+              </div>
+
+              <div id="tab-panel-upload" class="tab-panel hidden">
+                <label for="video-file-input" class="field-label">Chọn video từ điện thoại hoặc laptop (.mp4, .mov, .mkv)</label>
+                <input
+                  type="file"
+                  id="video-file-input"
+                  name="video_file"
+                  class="file-input"
+                  accept="video/*"
+                >
+              </div>
+
+              <div class="form-row-2">
+                <div class="field-group">
+                  <label for="source-lang-select" class="field-label">Ngôn ngữ gốc</label>
+                  <select id="source-lang-select" name="source_lang" class="select-input">
+                    <option value="auto">Tự động nhận diện (Trung / Anh)</option>
+                    <option value="zh-CN">Tiếng Trung (Bilibili / Douyin)</option>
+                    <option value="en">Tiếng Anh (YouTube / TikTok)</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label for="voice-select" class="field-label">Giọng lồng tiếng Việt chuẩn bản địa (6 thanh điệu)</label>
+                  <div class="voice-select-row">
+                    <select id="voice-select" name="voice_id" class="select-input">
+                      <option value="vi-female-review">Nữ Review Hoạt Hình / TikTok — Tiểu My HD (Nhanh, Tự nhiên • Khuyên dùng)</option>
+                      <option value="vi-female-natural">Nữ Kể Chuyện Truyền Cảm — Hoài My Studio (Mượt mà, Ấm áp)</option>
+                      <option value="vi-female-sweet">Nữ Ngọt Ngào — Anime / Ngôn Tình (Trong trẻo, Trẻ trung)</option>
+                      <option value="vi-male-review">Nam Review Phim / Hài Hước — Minh Khôi HD (Khỏe, Nhịp nhanh)</option>
+                      <option value="vi-VN-HoaiMyNeural">Nữ Tiêu Chuẩn — Hoài My (Rõ chữ, Đầm giọng)</option>
+                      <option value="vi-VN-NamMinhNeural">Nam Trầm Ấm — Nam Minh (Điềm đạm, Kể chuyện)</option>
+                    </select>
+                    <button type="button" id="voice-preview-btn" class="btn btn-outline btn-sm voice-preview-btn" title="Nghe thử giọng đọc AI đang chọn">
+                      Nghe thử
+                    </button>
+                  </div>
+                  <audio id="voice-preview-audio" class="hidden"></audio>
+                </div>
+              </div>
+
+              <label class="checkbox-row">
+                <input type="checkbox" id="auto-trim-checkbox" name="auto_trim_10m" checked>
+                <span>Nếu video dài hơn 10 phút, tự động cắt lấy 10 phút đầu</span>
+              </label>
+            </div>
+
+            <!-- Step B: Audio Controls -->
+            <div class="control-block">
+              <div class="block-head">
+                <h3>2. Điều Chỉnh Âm Thanh &amp; Tốc Độ Đọc</h3>
+                <button type="button" id="mute-orig-btn" class="btn btn-ghost btn-xs">Tắt tiếng gốc (0%)</button>
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-label-row">
+                  <label for="orig-vol-range">Âm thanh gốc video</label>
+                  <output id="orig-vol-val" class="mono-val">0%</output>
+                </div>
+                <input type="range" id="orig-vol-range" name="original_volume" min="0" max="100" value="0" class="range-input">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-label-row">
+                  <label for="tts-vol-range">Giọng đọc Tiếng Việt mới</label>
+                  <output id="tts-vol-val" class="mono-val">100%</output>
+                </div>
+                <input type="range" id="tts-vol-range" name="tts_volume" min="50" max="150" value="100" class="range-input">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-label-row">
+                  <label for="tts-speed-range">Tốc độ nói mặc định (Có thể chỉnh riêng từng câu ở dưới)</label>
+                  <output id="tts-speed-val" class="mono-val accent">1.20x</output>
+                </div>
+                <input type="range" id="tts-speed-range" name="tts_speed" min="0.80" max="1.80" step="0.05" value="1.20" class="range-input">
+              </div>
+
+              <div class="slider-group">
+                <div class="slider-label-row">
+                  <label for="bgm-vol-range">Âm thanh nền (Giới hạn &le; 30%)</label>
+                  <output id="bgm-vol-val" class="mono-val accent">15%</output>
+                </div>
+                <input type="range" id="bgm-vol-range" name="bgm_volume" min="0" max="30" value="15" class="range-input">
+              </div>
+
+              <div class="form-row-2">
+                <div class="field-group">
+                  <label for="bgm-preset-select" class="field-label">Chọn nhạc nền có sẵn</label>
+                  <select id="bgm-preset-select" name="bgm_preset" class="select-input">
+                    <option value="lofi">Lo-Fi Chill Nhẹ Nhàng</option>
+                    <option value="ambient">Ambient Công Nghệ</option>
+                    <option value="cinematic">Cinematic Sâu Lắng</option>
+                    <option value="none">Không dùng nhạc nền</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label for="bgm-file-input" class="field-label">Hoặc tải nhạc nền riêng</label>
+                  <input type="file" id="bgm-file-input" name="bgm_file" class="file-input file-input-compact" accept="audio/*">
+                </div>
+              </div>
+            </div>
+
+            <!-- Step C: Constant Single Blur Bar -->
+            <div class="control-block">
+              <div class="block-head">
+                <h3>3. Thanh Che Mờ Cố Định Xuyên Suốt</h3>
+                <label class="switch-inline">
+                  <input type="checkbox" id="blur-enabled-checkbox" name="blur_enabled" checked>
+                  <span>Bật che mờ</span>
+                </label>
+              </div>
+              <p class="hint-text">1 dải làm mờ cố định chạy từ đầu đến hết video, không nhấp nháy, chữ Việt gắn khít ở giữa.</p>
+
+              <div class="blur-sliders-grid">
+                <div class="slider-group">
+                  <div class="slider-label-row">
+                    <label for="blur-y-range">Vị trí dọc (Y)</label>
+                    <output id="blur-y-val" class="mono-val">77%</output>
+                  </div>
+                  <input type="range" id="blur-y-range" name="blur_y_pct" min="5" max="88" value="77" class="range-input">
+                </div>
+
+                <div class="slider-group">
+                  <div class="slider-label-row">
+                    <label for="blur-h-range">Độ dày thanh che</label>
+                    <output id="blur-h-val" class="mono-val">16%</output>
+                  </div>
+                  <input type="range" id="blur-h-range" name="blur_h_pct" min="8" max="30" value="16" class="range-input">
+                </div>
+
+                <div class="slider-group">
+                  <div class="slider-label-row">
+                    <label for="blur-w-range">Độ rộng thanh che</label>
+                    <output id="blur-w-val" class="mono-val">92%</output>
+                  </div>
+                  <input type="range" id="blur-w-range" name="blur_w_pct" min="40" max="100" value="92" class="range-input">
+                </div>
+
+                <div class="slider-group">
+                  <div class="slider-label-row">
+                    <label for="blur-r-range">Cường độ làm mờ</label>
+                    <output id="blur-r-val" class="mono-val">22px</output>
+                  </div>
+                  <input type="range" id="blur-r-range" name="blur_radius" min="6" max="30" value="22" class="range-input">
+                </div>
+              </div>
+            </div>
+
+            <div class="submit-bar">
+              <button type="submit" id="start-translate-btn" class="btn btn-primary btn-xl btn-block">
+                Bắt Đầu Dịch &amp; Lồng Tiếng (Trừ 1 lượt)
+              </button>
+              <p id="studio-status-note" class="status-note">
+                Đăng nhập tài khoản Free để nhận ngay 10 lượt dịch miễn phí mỗi tháng.
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Right Column: Live Blur Preview, Progress, Output Video & 2-Pass Editor -->
+        <div class="studio-panel glass-card output-column">
+          <div class="preview-header">
+            <h3>Màn Hình Preview &amp; Video Thành Phẩm</h3>
+            <span id="job-status-pill" class="status-pill is-idle">Sẵn sàng</span>
+          </div>
+
+          <!-- Stage: toggles between Live Blur Preview and Finished Video -->
+          <div class="video-stage" id="video-stage">
+            <div id="blur-preview-canvas" class="blur-preview-canvas">
+              <div class="mock-video-bg">
+                <div class="mock-top-tag">LIVE PREVIEW — THANH CHE MỜ CỐ ĐỊNH 100% VIDEO</div>
+                <div class="mock-orig-sub">原视频硬字幕 / Original Hardcoded Subtitles Here</div>
+              </div>
+              <div id="live-blur-bar" class="live-blur-bar">
+                <span class="live-vietsub-sample">Chào mọi người, chữ Vietsub nằm khít giữa thanh mờ!</span>
+              </div>
+            </div>
+
+            <video id="result-video-player" class="result-video hidden" controls playsinline></video>
+          </div>
+
+          <!-- Progress Bar & 6 Steps -->
+          <div class="progress-card">
+            <div class="progress-top">
+              <span id="progress-step-label">Chọn nguồn video và bấm Bắt đầu để AI xử lý</span>
+              <strong id="progress-pct-label" class="mono-val">0%</strong>
+            </div>
+            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar-track">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+            <ol class="steps-list" id="pipeline-steps">
+              <li data-step="1"><span>1</span> Trích video (&lt;10p)</li>
+              <li data-step="2"><span>2</span> Trích lời thoại</li>
+              <li data-step="3"><span>3</span> AI Dịch 2 lượt</li>
+              <li data-step="4"><span>4</span> Lồng tiếng khít</li>
+              <li data-step="5"><span>5</span> Mix âm &amp; BGM &lt;30%</li>
+              <li data-step="6"><span>6</span> Che mờ &amp; Gắn Sub</li>
+            </ol>
+          </div>
+
+          <!-- Download / Re-render Result Actions -->
+          <div id="result-actions" class="result-actions hidden">
+            <a id="download-output-link" href="#" class="btn btn-primary" download>
+              Tải Video Thành Phẩm (.MP4)
+            </a>
+            <button type="button" id="rerender-btn" class="btn btn-outline">
+              Áp Dụng Đổi Giọng / Sửa Sub &amp; Render Lại (Free)
+            </button>
+            <button type="button" id="back-preview-btn" class="btn btn-ghost btn-sm">
+              Xem lại khung che mờ
+            </button>
+          </div>
+
+          <!-- Error Box -->
+          <div id="job-error-box" class="error-banner hidden" role="alert"></div>
+
+          <!-- 2-Pass Subtitle Comparison & Editor -->
+          <div id="subtitles-editor-wrap" class="subtitles-wrap hidden">
+            <div class="subtitles-head">
+              <div>
+                <h4>Kiểm Tra Bản Dịch &amp; Chỉnh Tốc Độ Đọc Từng Câu</h4>
+                <small>Sửa trực tiếp lời Việt • Chỉnh tốc độ nói riêng cho mỗi câu (0.75x – 2.00x) • Bấm Nghe thử từng câu</small>
+              </div>
+              <div class="subtitles-head-actions">
+                <button type="button" id="apply-global-speed-all-btn" class="btn btn-ghost btn-xs" title="Áp dụng tốc độ mặc định đang chọn cho toàn bộ các câu">
+                  Đồng bộ tốc độ tất cả
+                </button>
+                <button type="button" id="auto-fit-speed-all-btn" class="btn btn-outline btn-xs" title="Tự động tính tốc độ vừa khít thời lượng cho từng câu">
+                  Auto khít từng câu
+                </button>
+                <span id="sub-count-badge" class="badge-soft">0 câu</span>
+              </div>
+            </div>
+            <div id="subtitles-list" class="subtitles-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Membership & Single Credit Pricing (CSS Grid + Subgrid aligned) -->
+    <section id="pricing" class="pricing-section container">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">MEMBERSHIP &amp; CREDITS</span>
+          <h2>Gói Hội Viên &amp; Mua Lẻ Lượt Dịch</h2>
+        </div>
+        <p class="section-desc">
+          Tặng ngay 10 lượt dịch Free mỗi tháng khi tạo tài khoản. Nâng cấp hoặc mua lẻ chỉ 3.000đ/lượt bất cứ lúc nào.
+        </p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Card 1: Free -->
+        <article class="pricing-card glass-card">
+          <div class="p-head">
+            <span class="plan-pill">MIỄN PHÍ</span>
+            <h3>Hội viên Free</h3>
+          </div>
+          <div class="p-price">
+            <strong>0đ</strong>
+            <span>/ tháng</span>
+          </div>
+          <ul class="p-features">
+            <li><strong>10 lần dịch / tháng</strong> tự động cấp mới</li>
+            <li>Hỗ trợ Bilibili, YouTube, file &lt; 10 phút</li>
+            <li>AI dịch 2 lượt + 1 thanh che mờ cố định</li>
+            <li>Lồng tiếng Việt + Nhạc nền &lt; 30%</li>
+          </ul>
+          <div class="p-cta">
+            <button type="button" class="btn btn-outline btn-block choose-plan-btn" data-plan="free">
+              Dùng Gói Free (10 lượt)
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 2: Pro -->
+        <article class="pricing-card glass-card is-featured">
+          <div class="p-head">
+            <span class="plan-pill is-pro">PHỔ BIẾN</span>
+            <h3>Hội viên Pro</h3>
+          </div>
+          <div class="p-price">
+            <strong>50.000đ</strong>
+            <span>/ tháng</span>
+          </div>
+          <ul class="p-features">
+            <li><strong>30 lần dịch / tháng</strong> (~1.660đ / video)</li>
+            <li>Ưu tiên luồng xử lý AI &amp; FFmpeg nhanh</li>
+            <li>Chỉnh sửa sub Lượt 2 &amp; Render lại miễn phí</li>
+            <li>Lưu lịch sử video đã dịch trọn tháng</li>
+          </ul>
+          <div class="p-cta">
+            <button type="button" class="btn btn-primary btn-block choose-plan-btn" data-plan="pro">
+              Nâng Cấp Pro — 50k
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 3: Ultra -->
+        <article class="pricing-card glass-card">
+          <div class="p-head">
+            <span class="plan-pill is-ultra">CAO CẤP</span>
+            <h3>Hội viên Ultra</h3>
+          </div>
+          <div class="p-price">
+            <strong>100.000đ</strong>
+            <span>/ tháng</span>
+          </div>
+          <ul class="p-features">
+            <li><strong>60 lần dịch / tháng</strong> cho creator chuyên nghiệp</li>
+            <li>Tải Tool Portable xem trực tiếp không giới hạn</li>
+            <li>Tùy chỉnh nhạc nền riêng &amp; giọng đọc AI</li>
+            <li>Hỗ trợ ưu tiên video dài tối đa 10 phút</li>
+          </ul>
+          <div class="p-cta">
+            <button type="button" class="btn btn-outline btn-block choose-plan-btn" data-plan="ultra">
+              Nâng Cấp Ultra — 100k
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 4: Pay-per-use 3k -->
+        <article class="pricing-card glass-card">
+          <div class="p-head">
+            <span class="plan-pill is-single">LINH HOẠT</span>
+            <h3>Mua Lẻ Lượt Dịch</h3>
+          </div>
+          <div class="p-price">
+            <strong>3.000đ</strong>
+            <span>/ 1 lần dịch</span>
+          </div>
+          <ul class="p-features">
+            <li>Không cần đăng ký gói tháng, dùng tới đâu mua tới đó</li>
+            <li>Cộng dồn vĩnh viễn vào ví lượt dịch của bạn</li>
+            <li>Đầy đủ AI dịch 2 lượt + lồng tiếng + che mờ</li>
+            <li>
+              <label for="single-qty-input" class="qty-inline-label">
+                Số lượt muốn mua:
+                <input type="number" id="single-qty-input" min="1" max="500" value="5" class="qty-input">
+              </label>
+            </li>
+          </ul>
+          <div class="p-cta">
+            <button type="button" id="buy-single-btn" class="btn btn-accent btn-block">
+              Mua 5 Lượt — 15.000đ
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Job History -->
+    <section id="history" class="history-section container">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">RECENT JOBS</span>
+          <h2>Lịch Sử Dịch Video Gần Đây</h2>
+        </div>
+        <button type="button" id="refresh-history-btn" class="btn btn-ghost btn-sm">Làm mới</button>
+      </div>
+      <div id="history-list" class="history-grid">
+        <div class="empty-state glass-card">
+          Đăng nhập để xem lại các video bạn đã dịch và tải về bất kỳ lúc nào.
+        </div>
+      </div>
+    </section>
+
+    <!-- Owner Control Center (Visible strictly to hauhuythh@gmail.com) -->
+    <section id="owner-section" class="owner-section container hidden" aria-label="Bảng điều khiển Owner">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker owner-kicker">OWNER CONTROL CENTER</span>
+          <h2>Quản Trị Hệ Thống &amp; Thành Viên (Full Quyền)</h2>
+        </div>
+        <div class="owner-top-actions">
+          <button type="button" id="owner-refresh-btn" class="btn btn-outline btn-sm">Tải lại dữ liệu Owner</button>
+        </div>
+      </div>
+
+      <!-- Summary Stats -->
+      <div class="owner-stats-grid">
+        <div class="stat-card glass-card">
+          <span class="stat-label">Tổng Thành Viên</span>
+          <strong id="owner-stat-users" class="stat-value">0</strong>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-label">Tổng Doanh Thu Đã Nạp</span>
+          <strong id="owner-stat-revenue" class="stat-value accent">0đ</strong>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-label">Trạng Thái Server</span>
+          <strong id="owner-stat-server" class="stat-value">Đang Hoạt Động</strong>
+        </div>
+      </div>
+
+      <!-- Server Maintenance Control -->
+      <div class="glass-card owner-panel">
+        <div class="owner-panel-head">
+          <div>
+            <h3>Đóng / Mở Server (Chế Độ Bảo Trì)</h3>
+            <p class="hint-text">Khi bật Bảo trì, toàn bộ người dùng khác bị tạm khóa gửi link / mua gói, riêng tài khoản Owner vẫn toàn quyền sử dụng.</p>
+          </div>
+          <button type="button" id="maintenance-toggle-btn" class="btn btn-danger-outline btn-sm">
+            Đóng Server (Bảo Trì)
+          </button>
+        </div>
+        <div class="maintenance-form-row">
+          <input
+            type="text"
+            id="maintenance-message-input"
+            class="text-input"
+            placeholder="Thông báo hiển thị khi đóng server bảo trì..."
+            value="Hệ thống Zay_Vietsub.vn đang bảo trì nâng cấp máy chủ. Vui lòng quay lại sau!"
+          >
+          <button type="button" id="save-maintenance-btn" class="btn btn-primary btn-sm">Lưu Thông Báo</button>
+        </div>
+      </div>
+
+      <!-- Member Management -->
+      <div class="glass-card owner-panel">
+        <div class="owner-panel-head">
+          <div>
+            <h3>Quản Lý Toàn Bộ Thành Viên</h3>
+            <p class="hint-text">Đổi gói Free/Pro/Ultra/Owner, cộng hoặc đặt lại lượt dịch, khóa/mở tài khoản hoặc xem lịch sử nạp từng người.</p>
+          </div>
+          <input
+            type="search"
+            id="owner-user-search"
+            class="text-input owner-search-input"
+            placeholder="Tìm theo email hoặc tên..."
+          >
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Thành Viên</th>
+                <th>Gói Hội Viên</th>
+                <th>Lượt Dịch</th>
+                <th>Tổng Chi Tiêu</th>
+                <th>Lịch Sử &amp; Thao Tác</th>
+              </tr>
+            </thead>
+            <tbody id="owner-users-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Per-Member Purchase & Deposit History -->
+      <div class="glass-card owner-panel" id="owner-tx-panel">
+        <div class="owner-panel-head">
+          <div>
+            <h3>Lịch Sử Mua Gói &amp; Nạp Lượt Của Từng Thành Viên</h3>
+            <p class="hint-text" id="owner-tx-subtitle">Đang hiển thị toàn bộ giao dịch trên hệ thống.</p>
+          </div>
+          <div class="owner-tx-controls">
+            <select id="owner-tx-filter-select" class="select-input owner-filter-select">
+              <option value="">Tất cả thành viên</option>
+            </select>
+            <button type="button" id="owner-clear-tx-filter-btn" class="btn btn-ghost btn-sm">Hiện tất cả</button>
+          </div>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Thời Gian</th>
+                <th>Thành Viên</th>
+                <th>Loại Giao Dịch</th>
+                <th>Lượt Cộng</th>
+                <th>Số Tiền</th>
+                <th>Chi Tiết</th>
+              </tr>
+            </thead>
+            <tbody id="owner-tx-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span><strong>Zay_Vietsub.vn</strong> — Công cụ dịch &amp; lồng tiếng video AI Trung / Anh sang Việt.</span>
+      <span>Tương thích hoàn hảo trên Điện thoại &amp; Laptop.</span>
+    </div>
+  </footer>
+
+  <!-- Native Modal Dialog 1: Auth (Sign In / Sign Up) -->
+  <dialog id="auth-dialog" class="modal-dialog" aria-labelledby="auth-dialog-title" closedby="any">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="auth-dialog-title">Tài Khoản Zay_Vietsub.vn</h2>
+        <button type="button" class="icon-close-btn" data-close-dialog="auth-dialog" aria-label="Đóng cửa sổ">✕</button>
+      </div>
+
+      <div class="auth-tabs" role="tablist">
+        <button type="button" class="tab-btn is-active" data-auth-tab="signin">Đăng nhập</button>
+        <button type="button" class="tab-btn" data-auth-tab="signup">Tạo tài khoản (Free 10 lượt)</button>
+      </div>
+
+      <!-- Sign In Form -->
+      <form id="signin-form" class="auth-form">
+        <div class="field-group">
+          <label for="signin-email" class="field-label">Email tài khoản</label>
+          <input
+            type="email"
+            id="signin-email"
+            name="email"
+            class="text-input"
+            autocomplete="username"
+            spellcheck="false"
+            enterkeyhint="next"
+            placeholder="ban@example.com"
+            autofocus
+            required
+          >
+        </div>
+
+        <div class="field-group">
+          <label for="signin-password" class="field-label">Mật khẩu</label>
+          <div class="password-wrap">
+            <input
+              type="password"
+              id="signin-password"
+              name="password"
+              class="text-input"
+              autocomplete="current-password"
+              enterkeyhint="done"
+              placeholder="Nhập mật khẩu"
+              required
+            >
+            <button type="button" class="toggle-pw-btn" data-target="signin-password">Hiện</button>
+          </div>
+        </div>
+
+        <p id="signin-error" class="form-error hidden" role="alert"></p>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Đăng nhập</button>
+      </form>
+
+      <!-- Sign Up Form -->
+      <form id="signup-form" class="auth-form hidden">
+        <div class="field-group">
+          <label for="signup-name" class="field-label">Tên hiển thị</label>
+          <input
+            type="text"
+            id="signup-name"
+            name="fullname"
+            class="text-input"
+            autocomplete="name"
+            enterkeyhint="next"
+            placeholder="Ví dụ: Minh Anh"
+            required
+          >
+        </div>
+
+        <div class="field-group">
+          <label for="signup-email" class="field-label">Email đăng ký</label>
+          <input
+            type="email"
+            id="signup-email"
+            name="email"
+            class="text-input"
+            autocomplete="username"
+            spellcheck="false"
+            enterkeyhint="next"
+            placeholder="ban@example.com"
+            required
+          >
+        </div>
+
+        <div class="field-group">
+          <label for="signup-password" class="field-label">Mật khẩu mới (tối thiểu 6 ký tự)</label>
+          <div class="password-wrap">
+            <input
+              type="password"
+              id="signup-password"
+              name="new-password"
+              class="text-input"
+              autocomplete="new-password"
+              minlength="6"
+              enterkeyhint="done"
+              placeholder="Tạo mật khẩu"
+              required
+            >
+            <button type="button" class="toggle-pw-btn" data-target="signup-password">Hiện</button>
+          </div>
+        </div>
+
+        <p id="signup-error" class="form-error hidden" role="alert"></p>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Tạo tài khoản Free (Nhận 10 lượt)</button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Native Modal Dialog 2: Membership Checkout & Transaction History -->
+  <dialog id="pricing-dialog" class="modal-dialog" aria-labelledby="pricing-dialog-title" closedby="any">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="pricing-dialog-title">Xác Nhận Nâng Cấp / Mua Lượt</h2>
+        <button type="button" class="icon-close-btn" data-close-dialog="pricing-dialog" aria-label="Đóng cửa sổ">✕</button>
+      </div>
+
+      <div id="checkout-summary" class="checkout-box"></div>
+
+      <div class="qr-demo-box">
+        <div class="qr-fake" aria-hidden="true">VIETQR<br>ZAY</div>
+        <div>
+          <strong>Thanh toán nhanh Zay_Vietsub.vn</strong>
+          <p>Chuyển khoản nội dung <code id="checkout-ref">ZAYVS</code> và bấm xác nhận để kích hoạt gói vào tài khoản.</p>
+        </div>
+      </div>
+
+      <p id="checkout-error" class="form-error hidden" role="alert"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close-dialog="pricing-dialog">Hủy</button>
+        <button type="button" id="confirm-checkout-btn" class="btn btn-primary">Xác Nhận Thanh Toán &amp; Kích Hoạt</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Native Modal Dialog 3: Portable Tool Guide -->
+  <dialog id="download-tool-dialog" class="modal-dialog" aria-labelledby="tool-dialog-title" closedby="any">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="tool-dialog-title">Tải Tool Zay_Vietsub Xem Trực Tiếp Web</h2>
+        <button type="button" class="icon-close-btn" data-close-dialog="download-tool-dialog" aria-label="Đóng cửa sổ">✕</button>
+      </div>
+      <div class="guide-steps">
+        <p><strong>Bước 1:</strong> Tải tệp <code>Zay_Vietsub_Portable.zip</code> và giải nén vào một thư mục trên máy.</p>
+        <p><strong>Bước 2:</strong> Đảm bảo máy có Python 3.10+ và tệp <code>ffmpeg.exe</code> đặt cùng thư mục.</p>
+        <p><strong>Bước 3:</strong> Nhấp đúp <code>Chay_Zay_Vietsub.bat</code> để khởi động server và tự mở trang web tại <code>http://127.0.0.1:8088</code>.</p>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close-dialog="download-tool-dialog">Đóng</button>
+        <a id="modal-download-tool-link" href="/Zay_Vietsub_Portable.zip" class="btn btn-primary" download="Zay_Vietsub_Portable.zip">
+          Tải Zay_Vietsub_Portable.zip Ngay
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+
+  <script src="/app.js?v=20261114e"></script>
+</body>
+</html>

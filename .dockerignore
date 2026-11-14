@@ -1,0 +1,12 @@
+.git/
+.firebase/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+cloudflared.exe
+storage/
+static/Zay_Vietsub_Portable.zip
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.firebase/
+cloudflared.exe
+storage/
+*.db
+*.db-journal
+static/Zay_Vietsub_Portable.zip
+*.log
+.DS_Store
+Thumbs.db
