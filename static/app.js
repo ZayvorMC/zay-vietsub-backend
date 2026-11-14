@@ -3,7 +3,7 @@
 const TOKEN_KEY = "zay_vietsub_token";
 
 const BACKEND_CANDIDATES = [
-  "https://leaders-stephen-acceptance-portraits.trycloudflare.com",
+  "https://zay-vietsub-backend-production.up.railway.app",
   "http://localhost:8088",
   "http://127.0.0.1:8088",
 ];
